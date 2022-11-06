@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:random_timer/constants/constants.dart';
 import 'package:random_timer/styles/colors.dart';
 import 'package:random_timer/widgets/button_widget.dart';
 
@@ -76,21 +77,36 @@ class _CountDownWidgetState extends State<CountDownWidget> {
 
     final minutes = strDigits(timerDuration.inMinutes.remainder(60));
     final seconds = strDigits(timerDuration.inSeconds.remainder(60));
-    return Column(
-      children: [
-        Text(
-          '$minutes:$seconds',
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: textColor,
-            fontSize: 120,
+    return Container(
+      width: double.infinity,
+      color: player.state == PlayerState.playing ? alarmColor : mainColor,
+      child: Column(
+        children: [
+          const Text(
+            notice,
+            style: TextStyle(
+              color: textColor,
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 35,
-        ),
-        ButtonWidget(onPressed: stopTimer),
-      ],
+          const SizedBox(
+            height: 50,
+          ),
+          Text(
+            '$minutes:$seconds',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: textColor,
+              fontSize: 120,
+            ),
+          ),
+          const SizedBox(
+            height: 35,
+          ),
+          ButtonWidget(onPressed: stopTimer),
+        ],
+      ),
     );
   }
 }

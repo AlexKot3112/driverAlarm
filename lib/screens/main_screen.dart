@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:random_timer/widgets/timer_widget.dart';
+import 'package:random_timer/widgets/countdown_widget.dart';
+
 
 class MainScreenWidget extends StatelessWidget {
   const MainScreenWidget({super.key});
@@ -11,7 +12,7 @@ class MainScreenWidget extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
       ),
-      body: const TimerWidget(),
+      body: const CountDownWidget(),
     );
   }
 }
